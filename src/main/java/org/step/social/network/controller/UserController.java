@@ -10,7 +10,7 @@ import org.step.social.network.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/social")
+@RequestMapping("/account/users")
 public class UserController {
 
     private final UserService userService;
