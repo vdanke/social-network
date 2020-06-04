@@ -27,6 +27,9 @@ public class User {
     @Column(name = "active")
     private boolean isEnabled;
 
+    @Column(name = "file_name")
+    private String fileName;
+
     @CreatedDate
     private LocalDateTime createdAt;
 
@@ -39,6 +42,14 @@ public class User {
     private Set<Role> authorities;
 
     public User() {
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     public LocalDateTime getUpdatedAt() {

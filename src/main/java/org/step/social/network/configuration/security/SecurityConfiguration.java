@@ -80,7 +80,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(authenticationEntryPoint)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/social/**", "/", "/auth/**")
+                .antMatchers("/social/**",
+                        "/",
+                        "/auth/**",
+                        "/favicon.ico",
+                        "/**/*.png",
+                        "/**/*.gif",
+                        "/**/*.svg",
+                        "/**/*.jpg",
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js",
+                        "/swagger-resources/**",
+                        "/swagger-ui.html",
+                        "/v2/api-docs")
                 .permitAll()
                 .anyRequest()
                 .authenticated();

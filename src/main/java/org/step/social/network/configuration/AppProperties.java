@@ -6,6 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class AppProperties {
 
     private final Auth auth = new Auth();
+    private final File file = new File();
 
     public static class Auth {
 
@@ -27,6 +28,22 @@ public class AppProperties {
         public void setExpiration(long expiration) {
             this.expiration = expiration;
         }
+    }
+
+    public static class File {
+        private String path;
+
+        public String getPath() {
+            return path;
+        }
+
+        public void setPath(String path) {
+            this.path = path;
+        }
+    }
+
+    public File getFile() {
+        return file;
     }
 
     public Auth getAuth() {
