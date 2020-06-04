@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.step.social.network.exception.NotFoundException;
 import org.step.social.network.model.User;
 import org.step.social.network.repository.UserRepository;
 
@@ -26,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException(
+                .orElseThrow(() -> new NotFoundException(
                         String.format("User by username %s not found", username))
                 );
         return new UserDetailsImpl(user);
@@ -37,7 +38,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         UUID userId = UUID.fromString(id);
 
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new UsernameNotFoundException("User by ID not found"));
+                .orElseThrow(() -> new NotFoundException("User by ID not found"));
 
         return new UserDetailsImpl(user);
     }
